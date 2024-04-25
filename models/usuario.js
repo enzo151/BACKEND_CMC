@@ -1,15 +1,16 @@
-//models/usuarios.js
+// Importação do módulo Sequelize e inicialização da conexão com o banco de dados
 const Sequelize = require('sequelize');
 const sequelize = require('../config/sequelize');
 
+// Definição do modelo de dados Usuario
 const Usuario = sequelize.define('Usuarios', {
-    //define as informações da tabela colunas
-
+    // Identificador único do usuário
     idUsuarios: {
-        type: Sequelize.INTEGER,
-        primaryKey: true, //define essa coluna como a chave primaria
-        autoIcrement: true //indica que é uma chave primaria autoincrementavel
+        type: Sequelize.INTEGER, // Tipo do dado como inteiro
+        primaryKey: true, // Define que esse campo é a chave primária
+        autoIncrement: true // Incrementa automaticamente o valor desse campo a cada inserção
     },
+    // Outros campos do modelo de dados Usuario
     nome: Sequelize.STRING,
     email: Sequelize.STRING,
     cpf: Sequelize.STRING,
@@ -20,12 +21,12 @@ const Usuario = sequelize.define('Usuarios', {
     bairro: Sequelize.STRING,
     cidade: Sequelize.STRING,
     estado: Sequelize.STRING,
-    imagem: Sequelize.STRING,
-    Tipos_Usuarios_idTipos_Usuarios: Sequelize.NUMBER
-},
-    {
-        //precisa disso pq nao tem as colunas createdAt e updateAt no bd
-        timestamps: false //adiciona colunas createdAt e updateAt automaticamente
-    });
+    foto: Sequelize.STRING,
+    Tipos_Usuarios_idTipos_Usuarios: Sequelize.INTEGER // Chave estrangeira que referencia o modelo Tipos_Usuarios
+}, {
+    // Desabilita a criação dos campos createdAt e updatedAt
+    timestamps: false
+});
 
-module.exporst = Usuario;
+// Exportação do modelo de dados Usuario
+module.exports = Usuario;

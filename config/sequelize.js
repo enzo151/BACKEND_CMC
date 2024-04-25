@@ -1,9 +1,11 @@
-//incializa o sequelize
-
+// Importação do módulo Sequelize
 const Sequelize = require('sequelize');
+
+// Importação do arquivo de configuração do banco de dados
 const databaseConfig = require('./database');
 
+// Inicialização de uma conexão com o banco de dados usando as configurações do arquivo database.js
 const sequelize = new Sequelize(databaseConfig.development);
 
-//agora voce pode usar o objeto "sequelize" para interagir com o banco de dados
+// Exportação do objeto de conexão com o banco de dados
 module.exports = sequelize;
